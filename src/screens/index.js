@@ -1,42 +1,48 @@
-import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator} from 'react-navigation'
 import React, { Component } from 'react';
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+  createBottomTabNavigator,
+} from 'react-navigation';
+import { Entypo, EvilIcons } from '@expo/vector-icons';
 
-import LoginScreen from './LoginScreen'
+import AuthLoadingScreen from './AuthLoadingScreen';
+import SplashScreen from './SplashScreen';
+import SignupScreen from './SignupScreen';
+import LoginScreen from './LoginScreen';
+import HomeScreen from './HomeScreen';
 
-const AuthNavigator = createStackNavigator(
+const HomeStack = createStackNavigator(
   {
-    login: {
-      getScreen: () => require('./LoginScreen').default
-    }
-  }
-)
+    Home: { screen: HomeScreen },
+  },
+);
 
-const TabNavigator = createBottomTabNavigator(
+const AuthStack = createStackNavigator(
   {
-    Home: {
-      getScreen: () => require('./HomeScreen').default
-    }
-  }
-)
+    Splash: { screen: SplashScreen },
+    Signup: { screen: SignupScreen },
+    Login: { screen: LoginScreen },
+  },
+);
 
-const MainNavigator = createStackNavigator({
-  Tab: TabNavigator
-})
+const AppStack = createBottomTabNavigator({
+  Home: { screen: HomeStack },
+});
 
 const AppNavigator = createSwitchNavigator(
   {
-    Splash: {
-      getScreen: () => require('./SplashScreen').default
-    },
-    Auth: AuthNavigator,
-    Main: MainNavigator
-  }, {
-    initialRouteName: 'Splash'
-  }
-)
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  },
+);
 
 class Navigation extends Component {
-  state = {  }
+  state = { }
   render() {
     return (
       <AppNavigator />
@@ -45,3 +51,51 @@ class Navigation extends Component {
 }
 
 export default Navigation;
+
+// import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
+// import React, { Component } from 'react';
+
+// import SignupScreen from './SignupScreen';
+// import LoginScreen from './LoginScreen';
+
+// const AuthNavigator = createStackNavigator(
+//   {
+//     login: {screen: LoginScreen},
+//     signup: {screen: SignupScreen},
+//   }
+// );
+
+// const TabNavigator = createBottomTabNavigator(
+//   {
+//     Home: {
+//       getScreen: () => require('./HomeScreen').default,
+//     },
+//   }
+// );
+
+// const MainNavigator = createStackNavigator({
+//   Tab: TabNavigator,
+// });
+
+// const AppNavigator = createSwitchNavigator(
+//   {
+//     Splash: {
+//       getScreen: () => require('./SplashScreen').default,
+//     },
+//     Auth: AuthNavigator,
+//     Main: MainNavigator,
+//   }, {
+//     initialRouteName: 'Splash',
+//   }
+// );
+
+// class Navigation extends Component {
+//   state = { }
+//   render() {
+//     return (
+//       <AppNavigator />
+//     );
+//   }
+// }
+
+// export default Navigation;

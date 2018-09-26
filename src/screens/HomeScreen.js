@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Box, Text} from 'react-native-design-utility'
+import {View, Text} from 'react-native'
 
 class HomeScreen extends Component {
   state = {  }
   render() {
     return (
-      <Box f={1} center>
+      <View>
         <Text>
           Home Screen
         </Text>
-      </Box>
+      </View>
     );
   }
 }

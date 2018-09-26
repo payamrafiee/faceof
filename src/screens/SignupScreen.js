@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
-class LoginScreen extends Component {
+class SignupScreen extends Component {
   state = { }
 
   _onSubmit = () => alert('this is me')
@@ -12,6 +12,7 @@ class LoginScreen extends Component {
         <View style={styles.form}>
           <Text style={styles.text}>Fill out to register</Text>
           <TextInput style={styles.textInputStyle} placeholder='email' />
+          <TextInput style={styles.textInputStyle} placeholder='username' />
           <TextInput style={styles.textInputStyle} placeholder='password' />
         </View>
         <TouchableOpacity onPress={this._onSubmit} style={styles.button}>
@@ -54,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SignupScreen;
