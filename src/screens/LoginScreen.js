@@ -10,7 +10,7 @@ class LoginScreen extends Component {
     return (
       <View style={styles.root}>
         <View style={styles.form}>
-          <Text style={styles.text}>Fill out to register</Text>
+          <Text style={styles.text}>Fill out to Login</Text>
           <TextInput style={styles.textInputStyle} placeholder='email' />
           <TextInput style={styles.textInputStyle} placeholder='password' />
         </View>
